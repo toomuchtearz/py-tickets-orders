@@ -157,7 +157,6 @@ class OrderSerializer(serializers.ModelSerializer):
             "id",
             "tickets",
             "created_at",
-            "user"
         )
 
     def create(self, validated_data):

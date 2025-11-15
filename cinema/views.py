@@ -126,14 +126,13 @@ class MovieSessionViewSet(viewsets.ModelViewSet):
 class OrderViewSet(viewsets.ModelViewSet):
     serializer_class = OrderSerializer
 
-    # def perform_create(self, serializer):
-    #     serializer.save(user=self.request.user)
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
 
     def get_queryset(self):
-        # queryset = Order.objects.filter(
-        #     user=self.request.user
-        # )
-        queryset = Order.objects.all()
+        queryset = Order.objects.filter(
+            user=self.request.user
+        )
 
         if self.action == "list":
             queryset = Order.objects.prefetch_related(
